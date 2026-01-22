@@ -1,0 +1,110 @@
+name: home_service_user
+description: "A new Flutter project."
+
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.6.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # COMMON
+  nb_utils: ^7.1.4
+  google_fonts: ^6.2.1
+  html: ^0.15.4
+  http: ^1.2.1
+  intl: ^0.18.1
+  cached_network_image: ^3.3.1
+  url_launcher: ^6.2.5
+
+  # FIREBASE
+  firebase_core: ^3.12.1
+  firebase_crashlytics: ^4.3.4
+  firebase_auth: ^5.5.1
+  firebase_storage: ^12.4.4
+  cloud_firestore: ^5.6.5
+  firebase_app_check: ^0.3.2+6
+
+  # FIREBASE MESSAGING
+  firebase_messaging: ^15.2.4
+  flutter_local_notifications: ^19.0.0
+
+  # STATE MANAGEMENT
+  mobx: ^2.5.0
+  flutter_mobx: ^2.3.0
+
+  # ICON
+  flutter_vector_icons: ^2.0.0
+  flutter_svg: ^2.0.10+1
+
+  # IMAGE
+  image_picker: ^1.0.7
+  photo_view: ^0.15.0
+  lottie: ^3.1.0
+
+  # OTHER
+  country_picker: ^2.0.25
+  flutter_custom_tabs: ^2.0.0+1
+  permission_handler: ^11.3.1
+  flutter_html: ^3.0.0
+  firebase_pagination: ^4.1.0
+  webview_flutter: ^4.7.0
+  file_picker: ^9.2.2
+
+  # SOCIAL LOGIN
+  google_sign_in: ^6.2.1
+  sign_in_with_apple: ^7.0.1
+
+  # PAYMENT
+  flutter_stripe: ^11.5.0
+
+  # MAP
+  google_maps_flutter: ^2.6.0
+  geolocator: ^13.0.3
+  geocoding: ^3.0.0
+
+  crypto: ^3.0.6
+
+  flutter_localizations:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.9
+  mobx_codegen: ^2.6.1
+  flutter_launcher_icons: ^0.13.1
+  flutter_lints: ^5.0.0
+  #flutter_native_splash: ^2.4.1
+dependency_overrides:
+  intl: ^0.19.0
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icons/app_icon.png"
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/icons/app_icon.png"
+
+  #flutter_native_splash:
+  #  color: "#FFFFFF"
+  #  image: assets/images/ic_about_us.png
+  #  android: true
+   # ios: true
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/
+    - assets/icons/
+    - assets/icons/upi_payment/
+    - assets/images/
+    - assets/flag/
+    - assets/lottie/

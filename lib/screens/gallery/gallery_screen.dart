@@ -1,0 +1,62 @@
+
+import 'package:flutter/material.dart';
+import 'package:nb_utils/nb_utils.dart';
+
+import '../../component/back_widget.dart';
+import '../../main.dart';
+import '../../utils/colors.dart';
+import '../../utils/constant.dart';
+import 'gallery_component.dart';
+
+class GalleryScreen extends StatefulWidget {
+  final String serviceName;
+  final List<String> attachments;
+
+  GalleryScreen({required this.serviceName, required this.attachments});
+
+  @override
+  State<GalleryScreen> createState() => _GalleryScreenState();
+}
+
+class _GalleryScreenState extends State<GalleryScreen> {
+  @override
+  void initState() {
+    afterBuildCreated(() {
+      setStatusBarColor(primaryColor);
+    });
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    setStatusBarColor(Colors.transparent);
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      top: false,
+      child: Scaffold(
+        appBar: appBarWidget(
+          "${language.lblGallery} ${'- ${widget.serviceName}'}",
+          textColor: Colors.white,
+          color: primaryColor,
+          backWidget: BackWidget(),
+          textSize: APP_BAR_TEXT_SIZE,
+        ),
+        body: AnimatedWrap(
+          spacing: 16,
+          runSpacing: 16,
+          listAnimationType: ListAnimationType.FadeIn,
+          fadeInConfiguration: FadeInConfiguration(duration: 2.seconds),
+          scaleConfiguration: ScaleConfiguration(duration: 300.milliseconds, delay: 50.milliseconds),
+          itemCount: widget.attachments.length,
+          itemBuilder: (context, i) {
+            return GalleryComponent(images: widget.attachments, index: i);
+          },
+        ).paddingSymmetric(horizontal: 16, vertical: 16),
+      ),
+    );
+  }
+}
