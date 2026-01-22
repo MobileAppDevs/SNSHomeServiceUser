@@ -15,7 +15,7 @@ const walk_Img2 = 'assets/images/walkthrough_2.png';
 const walk_Img3 = 'assets/images/walkthrough_3.png';
 const walk_Img4 = 'assets/images/walkthrough_4.png';
 const next_btn = 'assets/images/next_btn.png';
-const splash_icon = 'assets/images/splash_logo.png';
+const splash_icon = 'assets/icons/app_icon_transperent.png';
 const google_icon = 'assets/images/google_icon.png';
 //endregion
 

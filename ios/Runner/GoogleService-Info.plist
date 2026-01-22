@@ -3,23 +3,23 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>679894805605-8ob3h3nmk8tdcsdcrd5egsqbrqp0sd2k.apps.googleusercontent.com</string>
+	<string>1067952581297-fh0fuh4v7223hcljdclhp5mmni05btrq.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.679894805605-8ob3h3nmk8tdcsdcrd5egsqbrqp0sd2k</string>
+	<string>com.googleusercontent.apps.1067952581297-fh0fuh4v7223hcljdclhp5mmni05btrq</string>
 	<key>ANDROID_CLIENT_ID</key>
-	<string>679894805605-275foe669te00s2s8favhnto0dncdiba.apps.googleusercontent.com</string>
+	<string>1067952581297-69v77rqovrndne7foh82vht6tbik3hnj.apps.googleusercontent.com</string>
 	<key>API_KEY</key>
-	<string>AIzaSyCsAY4h_Ye91pSK7EPSqrsdbC3TO3ePDzI</string>
+	<string>AIzaSyDg_t9xuZJDu-bcq7b2dEH-YNopqmeBazk</string>
 	<key>GCM_SENDER_ID</key>
-	<string>679894805605</string>
+	<string>1067952581297</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.app.homeserviceuser</string>
+	<string>com.ongraph.homeserviceuser</string>
 	<key>PROJECT_ID</key>
-	<string>choresnap-83bea</string>
+	<string>homeservicedemo-3f3b5</string>
 	<key>STORAGE_BUCKET</key>
-	<string>choresnap-83bea.firebasestorage.app</string>
+	<string>homeservicedemo-3f3b5.firebasestorage.app</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -31,6 +31,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:679894805605:ios:f38dbb5678f086ad21aa8c</string>
+	<string>1:1067952581297:ios:d43caab996813e75d25090</string>
 </dict>
 </plist>

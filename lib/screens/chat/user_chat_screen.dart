@@ -124,7 +124,7 @@ class _UserChatScreenState extends State<UserChatScreen> with WidgetsBindingObse
           suffix: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              IconButton(
+             /* IconButton(
                 icon: Transform.rotate(angle: -0.75, child: Icon(Icons.attach_file_outlined)),
                 onPressed: () {
                   if (!appStore.isLoading) {
@@ -139,7 +139,7 @@ class _UserChatScreenState extends State<UserChatScreen> with WidgetsBindingObse
                     _handleCameraClick();
                   }
                 },
-              ),
+              ),*/
             ],
           ),
           decoration: inputDecoration(context).copyWith(hintText: language.message, hintStyle: secondaryTextStyle()),

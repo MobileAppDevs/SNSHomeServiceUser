@@ -99,7 +99,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     }
     else if (currentPaymentMethod?.type == PAYMENT_METHOD_STRIPE) {
       log("stripe payment-------");
-      StripeServiceNew stripeServiceNew = StripeServiceNew(
+     /* StripeServiceNew stripeServiceNew = StripeServiceNew(
         paymentSetting: currentPaymentMethod!,
         totalAmount: totalAmount,
         bookingId: widget.bookings.bookingDetail!.id.validate(),
@@ -114,7 +114,14 @@ class _PaymentScreenState extends State<PaymentScreen> {
         },
       );
 
-      stripeServiceNew.stripePay();
+      stripeServiceNew.stripePay();*/
+      savePay(
+        paymentMethod: PAYMENT_METHOD_STRIPE,
+        paymentStatus: widget.isForAdvancePayment
+            ? SERVICE_PAYMENT_STATUS_ADVANCE_PAID
+            : SERVICE_PAYMENT_STATUS_PAID,
+        txnId: /*p0['transaction_id']*/"TXN_${DateTime.now().millisecondsSinceEpoch}" ,
+      );
     }
     /* else if (currentPaymentMethod?.type == PAYMENT_METHOD_RAZOR) {
       // RazorPayServiceNew razorPayServiceNew = RazorPayServiceNew(

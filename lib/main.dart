@@ -92,7 +92,7 @@ void main() async {
   defaultBlurRadius = 0;
   defaultSpreadRadius = 0;
   textSecondaryColorGlobal = appTextSecondaryColor;
-  textPrimaryColorGlobal = /*appTextPrimaryColor*/primaryColor;
+  textPrimaryColorGlobal = /*appTextPrimaryColor*/ primaryColor;
   defaultAppButtonElevation = 0;
   pageRouteTransitionDurationGlobal = 400.milliseconds;
   textBoldSizeGlobal = 14;
@@ -101,55 +101,51 @@ void main() async {
 
   await initialize();
   localeLanguageList = languageList();
-  await Firebase.initializeApp().then((value) async {
-    /// Firebase Notification
-    initFirebaseMessaging();
-    FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandler);// todo  recommended to register globally
-    if ( appConfigurationStore.fcm_token.isEmpty) { // this is for generate Fcm token
-      /// Subscribe Firebase Topic
-     await subscribeToFirebaseTopic();
-    }else{
+
+  if (kIsWeb) {
+    final firebaseApp = await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+  }else {
+    await Firebase.initializeApp().then((value) async {
+      /// Firebase Notification
+      initFirebaseMessaging();
+      FirebaseMessaging.onBackgroundMessage(
+          firebaseMessagingBackgroundHandler); // todo  recommended to register globally
+      if (appConfigurationStore.fcm_token
+          .isEmpty) { // this is for generate Fcm token
+        /// Subscribe Firebase Topic
+        await subscribeToFirebaseTopic();
+      } else {
+        print('FCM TOKEN ${appConfigurationStore.fcm_token}');
+      }
       print('FCM TOKEN ${appConfigurationStore.fcm_token}');
-    }
-    print('FCM TOKEN ${appConfigurationStore.fcm_token}');
-    // Force enable crashlytics collection enabled if we're testing it
-    await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+      // Force enable crashlytics collection enabled if we're testing it
+      await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
 
-    // Pass all uncaught "fatal" errors from the framework to Crashlytics
-    FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-    // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
-    PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-      return true;
-    };
-
-    // await FirebaseAppCheck.instance.activate(
-    //   androidProvider: kDebugMode
-    //       ? AndroidProvider.debug
-    //       : AndroidProvider.playIntegrity,
-    //   appleProvider: AppleProvider.appAttest,
-    // );
-
-
-      await FirebaseAppCheck.instance.activate(
-    appleProvider: AppleProvider.deviceCheck, // or .deviceCheck
-    androidProvider: AndroidProvider.playIntegrity,
-  );
-
-
-  });
- /* await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  ).then((value) {
-    /// Firebase Notification
-    initFirebaseMessaging();
-    if (kReleaseMode) {
+      // Pass all uncaught "fatal" errors from the framework to Crashlytics
       FlutterError.onError =
           FirebaseCrashlytics.instance.recordFlutterFatalError;
-    }
-  });*/
 
+      // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+      PlatformDispatcher.instance.onError = (error, stack) {
+        FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+        return true;
+      };
+
+      // await FirebaseAppCheck.instance.activate(
+      //   androidProvider: kDebugMode
+      //       ? AndroidProvider.debug
+      //       : AndroidProvider.playIntegrity,
+      //   appleProvider: AppleProvider.appAttest,
+      // );
+
+      await FirebaseAppCheck.instance.activate(
+        appleProvider: AppleProvider.deviceCheck, // or .deviceCheck
+        androidProvider: AndroidProvider.playIntegrity,
+      );
+    });
+  }
   int themeModeIndex =
       getIntAsync(THEME_MODE_INDEX, defaultValue: THEME_MODE_SYSTEM);
   if (themeModeIndex == THEME_MODE_LIGHT) {
@@ -169,7 +165,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   void initState() {
-     appStore.setDarkMode(false);
+    appStore.setDarkMode(false);
     super.initState();
   }
 
@@ -187,19 +183,22 @@ class _MyAppState extends State<MyApp> {
           builder: (_, snap) {
             return Observer(
               builder: (_) => MaterialApp(
-                
                 debugShowCheckedModeBanner: false,
                 navigatorKey: navigatorKey,
                 home: SplashScreen(),
-                themeMode: appStore.isDarkMode ? ThemeMode.light/*ThemeMode.dark*/ : ThemeMode.light,
+                themeMode: appStore.isDarkMode
+                    ? ThemeMode.light /*ThemeMode.dark*/
+                    : ThemeMode.light,
                 theme: ThemeData(
-                  primaryColor:primaryColor,
+                    primaryColor: primaryColor,
                     textSelectionTheme: TextSelectionThemeData(
-                      cursorColor: primaryColor,            // Cursor line color
-                      selectionColor: primaryColor.withOpacity(0.4), // Highlight color
-                      selectionHandleColor: primaryColor,   // "Waterdrop" handle color
-                    )
-                  ),
+                      cursorColor: primaryColor,
+                      // Cursor line color
+                      selectionColor: primaryColor.withOpacity(0.4),
+                      // Highlight color
+                      selectionHandleColor:
+                          primaryColor, // "Waterdrop" handle color
+                    )),
                 title: APP_NAME,
                 supportedLocales: LanguageDataModel.languageLocales(),
                 localizationsDelegates: [

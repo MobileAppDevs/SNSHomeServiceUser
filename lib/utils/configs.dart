@@ -1,12 +1,12 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 
-const APP_NAME = 'Choresnap';
+const APP_NAME = 'SNS Home Service User';
 const APP_NAME_TAG_LINE = '';
 var defaultPrimaryColor = Color(0xFF038D8D);
 
 // Don't add slash at the end of the url
-const DOMAIN_URL = 'https://handymanservice.ongraph.com'; // Don't add slash at the end of the url
+const DOMAIN_URL = 'https://oghomeservice.ongraph.com'; // Don't add slash at the end of the url
 const BASE_URL = '$DOMAIN_URL/api/';
 
 
